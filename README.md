@@ -62,3 +62,101 @@ docker compose up -d --build
 
 # 3. Ejecutar el proyecto
 npm run start:dev
+
+## 🧰 Comandos completos de como se genero el proyecto
+
+### 0) Prerrequisitos
+Se recomienda usar la **última versión LTS de Node.js**.
+
+```bash
+# Instalar/usar LTS con nvm
+nvm install --lts
+nvm use --lts
+
+# Verificar versiones
+node -v
+npm -v
+
+1) Verificar Nest CLI (instalar si no existe)
+
+# Ver versión (fallará si no está instalado)
+nest --version || true
+
+# Instalar globalmente
+npm i -g @nestjs/cli
+
+# Verificar
+nest --version
+
+
+2) Crear proyecto NestJS
+
+nest new demo-nestjs
+cd demo-nestjs
+
+3) Instalar dependencias principales
+
+# ORM + PostgreSQL
+npm i @nestjs/typeorm typeorm pg
+
+# Config y validación
+npm i @nestjs/config class-validator class-transformer @nestjs/mapped-types
+
+# (Opcional) Swagger para documentación
+npm i @nestjs/swagger swagger-ui-express
+
+4) Generar scaffolding (módulo Users)
+
+# Genera módulo + controller + service (vacíos)
+nest g module users
+nest g controller users
+nest g service users
+
+# (Opcional) Generar un recurso base con CRUD (Nest prompts)
+# nest g resource users
+
+5) Variables de entorno (crear .env)
+6) Docker: levantar PostgreSQL
+
+Estructura sugerida:
+
+/initdb/010_schema.sql   # script de creación de tablas
+Dockerfile
+docker-compose.yml
+
+Levantar DB
+
+docker compose up -d --build
+
+
+7) Configurar TypeORM en app.module.ts
+
+8) Ejecutar la app
+
+# desarrollo
+npm run start:dev
+
+# producción
+npm run start:prod
+
+
+API disponible en: http://localhost:3000/api/users
+
+🔑 Endpoints principales
+
+GET /api/users → Lista todos
+
+GET /api/users/:id → Obtiene por ID (UUID)
+
+POST /api/users → Crea usuario
+
+PATCH /api/users/:id → Actualiza usuario
+
+DELETE /api/users/:id → Elimina usuario
+
+Colección Postman sugerida en: postman/users.postman_collection.json.
+
+
+
+
+
