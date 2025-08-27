@@ -39,5 +39,5 @@ Implementa una **arquitectura por capas**, separando responsabilidades de forma 
 
 ### 1. Clonar repositorio
 ```bash
-git clone https://github.com/<tu-usuario>/demo-nestjs-users-api.git
+git clone https://github.com/KelvinCastillo/demo-nestjs-users-api.git
 cd demo-nestjs-users-api
